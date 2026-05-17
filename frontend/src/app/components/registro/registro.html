@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Crear Cuenta</h2>
+
+          <div *ngIf="mensajeExito" class="alert alert-success">{{ mensajeExito }}</div>
+          <div *ngIf="mensajeError" class="alert alert-danger">{{ mensajeError }}</div>
+
+          <form (ngSubmit)="onSubmit()" #registroForm="ngForm">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" 
+                     [(ngModel)]="usuario.nombre" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" name="email" 
+                     [(ngModel)]="usuario.email" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" name="password" 
+                     [(ngModel)]="usuario.password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!registroForm.form.valid">
+              Registrarse
+            </button>
+            <p class="text-center mt-3 mb-0">
+              ¿Ya tienes cuenta? <a routerLink="/login" style="cursor: pointer;">Inicia sesión aquí</a>
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
