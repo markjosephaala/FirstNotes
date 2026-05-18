@@ -1,35 +1,49 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-5">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
+<div class="container-fluid login-page-container">
+  <div class="row min-vh-100 align-items-center">
+    
+    <!-- COLUMNA IZQUIERDA: LOGO Y SLOGAN -->
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center left-branding-section">
+      <div class="branding-wrapper">
+        <!-- TODO: reemplazar URL -->
+        <img src="assets/logo.png" alt="Logo" class="login-logo mb-4">
+        <h1 class="display-4 fw-bold text-white">FirstNotes</h1>
+        <p class="lead text-white-50">La teoría musical se aprende fácil</p>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: FORMULARIO -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center right-form-section">
+      <div class="card login-card shadow-lg">
+        <div class="card-body p-5">
+          <h2 class="card-title text-center mb-4 login-title">Iniciar Sesión</h2>
 
           <div *ngIf="mensajeExito" class="alert alert-success">{{ mensajeExito }}</div>
           <div *ngIf="mensajeError" class="alert alert-danger">{{ mensajeError }}</div>
 
           <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="email" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="email" name="email" 
-                     [(ngModel)]="credenciales.email" required>
+              <input type="email" class="form-control custom-input" id="email" name="email" 
+                     [(ngModel)]="credenciales.email" required placeholder="ejemplo@correo.com">
             </div>
 
-            <div class="mb-3">
+            <div class="mb-4">
               <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password" name="password" 
-                     [(ngModel)]="credenciales.password" required>
+              <input type="password" class="form-control custom-input" id="password" name="password" 
+                     [(ngModel)]="credenciales.password" required placeholder="••••••••">
             </div>
 
-            <button type="submit" class="btn btn-success w-100" [disabled]="!loginForm.form.valid">
+            <button type="submit" class="btn btn-custom-submit w-100 py-2.5 mt-2" [disabled]="!loginForm.form.valid">
               Entrar
             </button>
-            <p class="text-center mt-3 mb-0">
-              ¿No tienes cuenta? <a routerLink="/registro" style="cursor: pointer;">Regístrate aquí</a>
+            
+            <p class="text-center mt-4 mb-0 register-text">
+              ¿No tienes cuenta? <a routerLink="/registro" class="register-link">Regístrate aquí</a>
             </p>
           </form>
         </div>
       </div>
     </div>
+
   </div>
 </div>

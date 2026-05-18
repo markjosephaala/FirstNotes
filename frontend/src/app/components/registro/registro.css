@@ -1,0 +1,103 @@
+/* Contenedor principal para asegurar que ocupe toda la pantalla */
+.login-page-container {
+  background-color: #f8f9fa;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* --- SECCIÓN IZQUIERDA (BRANDING) --- */
+.left-branding-section {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Degradado azul elegante */
+  min-height: 40vh; /* En móviles se apila arriba */
+  padding: 3rem;
+}
+
+.login-logo {
+  max-width: 150px;
+  height: auto;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* --- SECCIÓN DERECHA (FORMULARIO) --- */
+.right-form-section {
+  padding: 3rem;
+}
+
+/* Tarjeta del formulario más estilizada */
+.login-card {
+  border: none;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px; /* Evita que el formulario se estire demasiado en pantallas gigantes */
+  background: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-title {
+  color: #212529;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Inputs más modernos con focus suave */
+.custom-input {
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.custom-input:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.15);
+  outline: none;
+}
+
+/* Botón personalizado (reemplaza al btn-success de bootstrap) */
+.btn-custom-submit {
+  background-color: #2a5298;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.btn-custom-submit:hover:not(:disabled) {
+  background-color: #1e3c72;
+  transform: translateY(-1px);
+}
+
+.btn-custom-submit:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Links */
+.register-text {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.register-link {
+  color: #2a5298;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+  color: #1e3c72;
+}
+
+/* --- RESPONSIVE (Pantallas medianas y grandes) --- */
+@media (min-width: 768px) {
+  .left-branding-section {
+    min-height: 100vh; /* En escritorio ocupa todo el alto */
+  }
+  .right-form-section {
+    min-height: 100vh;
+  }
+}
