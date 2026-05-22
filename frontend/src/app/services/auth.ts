@@ -20,4 +20,10 @@ export class AuthService {
   login(credenciales: any): Observable<any> {
   return this.http.post(`${this.apiUrl}/api/auth/login`, credenciales);
 }
+
+// Método para actualizar username
+  actualizarUsername(id: number, nuevoUsername: string): Observable<any> {
+    // Pasamos el nuevo username dentro de un objeto en el cuerpo de la petición
+    return this.http.put(`${this.apiUrl}/api/auth/usuario/${id}`, { username: nuevoUsername });
+  }
 }

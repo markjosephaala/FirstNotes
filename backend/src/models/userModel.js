@@ -11,6 +11,13 @@ const User = {
             [username, email, passwordHash]
         );
         return result;
+    },
+    updateUsername: async (id, username) => {
+        const [result] = await db.query(
+            'UPDATE usuarios SET username = ? WHERE id = ?',
+            [username, id]
+        );
+        return result; // Devolvemos el resultado que contiene affectedRows
     }
 };
 

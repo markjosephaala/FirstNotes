@@ -25,22 +25,37 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {} 
 
   onLogin() {
+    console.log('Login ejecutado');
     this.mensajeError = '';
     this.mensajeExito = '';
 
     this.authService.login(this.credenciales).subscribe({
       next: (res) => {
-        this.mensajeExito = '¡Bienvenido de nuevo!';
-        localStorage.setItem('token', res.token);
-        console.log('Token guardado con éxito:', res.token);
 
-        // 3. REDIRIGE AL USUARIO TRAS 1.5 SEGUNDOS (para que le dé tiempo a ver el recuadro verde)
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']); // <-- Cambia '/dashboard' por tu ruta principal
-        }, 1500);
-      },
+  this.mensajeExito = '¡Bienvenido de nuevo!';
+
+  if (res.usuario) { 
+          sessionStorage.setItem('nombreUsuario', res.usuario.username);
+          sessionStorage.setItem('idUsuario', String(res.usuario.id));
+          console.log("")
+        }
+        
+        // Si tu backend guarda el token en el sessionStorage, también iría aquí:
+        if (res.token) {
+          sessionStorage.setItem('token', res.token);
+        }
+
+  console.log('Intentando redirigir a /editar-perfil...');
+  
+  this.router.navigate(['/editar-perfil'])
+    .then(nav => {
+      console.log('¿Redirección exitosa?:', nav);
+    })
+    .catch(err => {
+      console.error('Error al redirigir:', err);
+    });
+},
       error: (err) => {
-        // Manejo de errores impecable
         this.mensajeError = err.error?.error || 'Error al iniciar sesión';
       }
     });
