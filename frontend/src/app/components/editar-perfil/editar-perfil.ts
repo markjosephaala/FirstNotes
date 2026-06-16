@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
@@ -19,7 +19,9 @@ export class EditarPerfilComponent implements OnInit {
   mensajeExito: string = '';
   mensajeError: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.nombre = sessionStorage.getItem('nombreUsuario') || 'Usuario';
@@ -38,9 +40,12 @@ export class EditarPerfilComponent implements OnInit {
         // Actualizamos la pantalla y el sessionStorage para que el cambio sea permanente
         this.nombre = res.nuevoUsername;
         sessionStorage.setItem('nombreUsuario', res.nuevoUsername);
+
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.mensajeError = err.error?.error || 'No se pudo actualizar el nombre';
+        this.cdr.detectChanges();
       }
     });
   }

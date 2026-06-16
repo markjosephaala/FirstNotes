@@ -47,13 +47,13 @@ export class LoginComponent {
 
   console.log('Intentando redirigir a /editar-perfil...');
   
-  this.router.navigate(['/editar-perfil'])
-    .then(nav => {
-      console.log('¿Redirección exitosa?:', nav);
-    })
-    .catch(err => {
-      console.error('Error al redirigir:', err);
-    });
+  this.router.navigate(['/home'])
+  .then(nav => {
+    console.log('¿Redirección al Home exitosa?:', nav);
+  })
+  .catch(err => {
+    console.error('Error al redirigir al Home:', err);
+  });
 },
       error: (err) => {
         this.mensajeError = err.error?.error || 'Error al iniciar sesión';

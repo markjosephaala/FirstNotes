@@ -1,0 +1,31 @@
+<!-- NAVBAR SUPERIOR -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <!-- Aquí puedes poner una imagen de logo o texto -->
+    <span class="logo-text">🎵 FirstNotes </span>
+  </div>
+  
+  <div class="nav-actions">
+    <!-- Enlace para ir a editar perfil si el usuario quiere -->
+    <a routerLink="/editar-perfil" class="btn-perfil">Mi Perfil</a>
+    <!-- Botón de cerrar sesión -->
+    <button (click) = "onLogout()" class="btn-logout">Logout</button>
+  </div>
+</nav>
+
+<!-- CONTENIDO PRINCIPAL DEL HOME -->
+<main class="home-container">
+  <div class="welcome-box">
+    <!-- Saludo dinámico con el nombre del usuario -->
+    <h1>¡Hola, {{ nombreUsuario }}!</h1>
+    <p class="subtitle">Bienvenido a tu panel de aprendizaje. Elige una actividad para comenzar:</p>
+    
+    <!-- Sección de Lecciones -->
+    <div class="lessons-section">
+      <button routerLink="/quiz-notas" class="btn-leccion">
+        <span class="btn-icon">📖</span>
+        <span class="btn-text">Lección 1 - Identificación de notas en la clave de Sol</span>
+      </button>
+    </div>
+  </div>
+</main>
